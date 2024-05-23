@@ -14,6 +14,7 @@
 		BBD5DDFA2BFF175D00115699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBD5DDF92BFF175D00115699 /* Assets.xcassets */; };
 		BBD5DDFD2BFF175D00115699 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD5DDFB2BFF175D00115699 /* LaunchScreen.storyboard */; };
 		BBD5DE062BFF1A1300115699 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = BBD5DE052BFF1A1300115699 /* YumemiWeather */; };
+		BBD5DE082BFF2A3500115699 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DE072BFF2A3500115699 /* LaunchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		BBD5DDF92BFF175D00115699 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBD5DDFC2BFF175D00115699 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBD5DDFE2BFF175D00115699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBD5DE072BFF2A3500115699 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +60,13 @@
 		BBD5DDEF2BFF175C00115699 /* AppWeather */ = {
 			isa = PBXGroup;
 			children = (
+				BBD5DE072BFF2A3500115699 /* LaunchViewController.swift */,
 				BBD5DDF02BFF175C00115699 /* AppDelegate.swift */,
 				BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */,
 				BBD5DDF42BFF175C00115699 /* ViewController.swift */,
 				BBD5DDF62BFF175C00115699 /* Main.storyboard */,
-				BBD5DDF92BFF175D00115699 /* Assets.xcassets */,
 				BBD5DDFB2BFF175D00115699 /* LaunchScreen.storyboard */,
+				BBD5DDF92BFF175D00115699 /* Assets.xcassets */,
 				BBD5DDFE2BFF175D00115699 /* Info.plist */,
 			);
 			path = AppWeather;
@@ -149,6 +152,7 @@
 				BBD5DDF52BFF175C00115699 /* ViewController.swift in Sources */,
 				BBD5DDF12BFF175C00115699 /* AppDelegate.swift in Sources */,
 				BBD5DDF32BFF175C00115699 /* SceneDelegate.swift in Sources */,
+				BBD5DE082BFF2A3500115699 /* LaunchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

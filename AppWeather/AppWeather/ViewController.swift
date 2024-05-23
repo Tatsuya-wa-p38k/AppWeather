@@ -21,6 +21,11 @@ class ViewController: UIViewController {
     }
 
 
+
+    @IBAction func buttonClose(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+
     @IBAction func buttonReload(_ sender: Any) {
         //関数で処理したいですね
         outputWeatherType()
