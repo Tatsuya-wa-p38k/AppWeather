@@ -23,6 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="195.33333333333334"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="196.33333333333334" id="RRA-LW-BjC"/>
+                                            <constraint firstAttribute="width" secondItem="N91-Zt-hwo" secondAttribute="height" multiplier="196:195" id="Wa2-Kf-ViP"/>
                                             <constraint firstAttribute="width" secondItem="N91-Zt-hwo" secondAttribute="height" multiplier="1:1" constant="1" id="evy-eH-v4Q"/>
                                         </constraints>
                                     </imageView>
@@ -56,7 +57,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-AW-KxS">
-                                <rect key="frame" x="113.66666666666669" y="614.33333333333337" width="67" height="35"/>
+                                <rect key="frame" x="114" y="614.33333333333337" width="67" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
                             </button>
@@ -64,6 +65,9 @@
                                 <rect key="frame" x="207.33333333333334" y="614.33333333333337" width="76.333333333333343" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                                <connections>
+                                    <action selector="buttonReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JeD-oM-jsc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -78,6 +82,9 @@
                             <constraint firstItem="vtk-Hy-aGi" firstAttribute="centerX" secondItem="jVI-wu-br7" secondAttribute="centerX" id="vI1-PR-97I"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherType" destination="N91-Zt-hwo" id="iQL-wb-UCD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
