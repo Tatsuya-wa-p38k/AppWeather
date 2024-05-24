@@ -16,7 +16,7 @@ class LaunchViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        performSegue(withIdentifier: tomain, sender: <#T##Any?#>)
+        performSegue(withIdentifier: "tomain", sender: nil)
     }
 
 
