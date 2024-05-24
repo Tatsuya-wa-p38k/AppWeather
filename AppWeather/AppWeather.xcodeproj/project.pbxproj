@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BBAD60B02C00283500330388 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAD60AF2C00283500330388 /* Weather.swift */; };
 		BBD5DDF12BFF175C00115699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DDF02BFF175C00115699 /* AppDelegate.swift */; };
 		BBD5DDF32BFF175C00115699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */; };
 		BBD5DDF52BFF175C00115699 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DDF42BFF175C00115699 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BBAD60AF2C00283500330388 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		BBD5DDED2BFF175C00115699 /* AppWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD5DDF02BFF175C00115699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				BBD5DDF02BFF175C00115699 /* AppDelegate.swift */,
 				BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */,
 				BBD5DDF42BFF175C00115699 /* ViewController.swift */,
+				BBAD60AF2C00283500330388 /* Weather.swift */,
 				BBD5DDF62BFF175C00115699 /* Main.storyboard */,
 				BBD5DDFB2BFF175D00115699 /* LaunchScreen.storyboard */,
 				BBD5DDF92BFF175D00115699 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				BBD5DDF12BFF175C00115699 /* AppDelegate.swift in Sources */,
 				BBD5DDF32BFF175C00115699 /* SceneDelegate.swift in Sources */,
 				BBD5DE082BFF2A3500115699 /* LaunchViewController.swift in Sources */,
+				BBAD60B02C00283500330388 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

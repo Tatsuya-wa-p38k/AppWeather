@@ -6,20 +6,25 @@
 //
 
 import UIKit
+//(delegateで処理をWeather.swiftに移動させるため下記コードは不要)
+//import YumemiWeather
 
-//さっきAdd Packagesより導入したものを使えるようにするため
-import YumemiWeather
+class ViewController: UIViewController{
 
+    //Weather.swiftにあるクラスWeatherDetailをインスタンス化
+    //(最初にやるのでclass ViewController又はアウトレット接続のすぐ下に記載する)
+    var weatherDetail = WeatherDetail()
 
-class ViewController: UIViewController {
 
     @IBOutlet weak var weatherType: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //インスタンス化したクラスにはデリゲートを持っていく自分自身にお約束
+        weatherDetail.delegate = self
         // Do any additional setup after loading the view.
-    }
 
+    }
 
 
     @IBAction func buttonClose(_ sender: Any) {
@@ -27,37 +32,39 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonReload(_ sender: Any) {
-        //関数で処理したいですね
-        outputWeatherType()
+        //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
+        weatherDetail.setWeatherType()
     }
+}
 
-    //条件の前提となるはれ、あめ、くもりの情報を、まずはここに持っていきたい
 
-    func outputWeatherType() {
+extension ViewController: WeatherDelegate {
 
-        //天気の情報を取得する(printでログに天気情報が出力されていることが確認)
-        let fetchWeatherString = YumemiWeather.fetchWeatherCondition()
-        print(fetchWeatherString)
+    func setWeatherType(type:String) {
+        var weatherName = "sunny"
+        var tintColor = UIColor.red
 
-        switch fetchWeatherString {
+        switch type {
         case "sunny" :
-            weatherType.image = UIImage(named: "sunny")
-            weatherType.tintColor = UIColor.red
+            weatherName = "sunny"
+            tintColor = UIColor.red
 
         case "cloudy" :
-            weatherType.image = UIImage(named: "cloudy")
-            weatherType.tintColor = UIColor.gray
+            weatherName = "cloudy"
+            tintColor = UIColor.gray
 
         case "rainy" :
-            weatherType.image = UIImage(named: "rainy")
-            weatherType.tintColor = UIColor.blue
+            weatherName = "rainy"
+            tintColor = UIColor.blue
 
         default:
             break
-
         }
+        weatherType.image = UIImage(named: weatherName)
+        weatherType.tintColor = tintColor
 
     }
 
 }
+
 
