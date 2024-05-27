@@ -45,6 +45,8 @@ class ViewController: UIViewController{
 extension ViewController: WeatherDelegate {
 
 
+
+
     //エラー発生時の処理を下記２つの関数として記載する
     func didEncounterError(error: Error) {
         showAlert(error: error)
@@ -54,6 +56,10 @@ extension ViewController: WeatherDelegate {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    func outPutWeatherInfomation(type:String) {
+        
     }
 
 
