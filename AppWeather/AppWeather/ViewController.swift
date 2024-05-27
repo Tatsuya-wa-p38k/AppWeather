@@ -34,11 +34,28 @@ class ViewController: UIViewController{
     @IBAction func buttonReload(_ sender: Any) {
         //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
         weatherDetail.setWeatherType()
+
+        
+
+        
     }
 }
 
 
 extension ViewController: WeatherDelegate {
+
+
+    //エラー発生時の処理を下記２つの関数として記載する
+    func didEncounterError(error: Error) {
+        showAlert(error: error)
+    }
+
+    func showAlert(error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
 
     func setWeatherType(type:String) {
         var weatherName = "sunny"
