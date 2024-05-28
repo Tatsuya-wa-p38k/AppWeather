@@ -63,9 +63,11 @@ extension ViewController: WeatherDelegate {
     }
 
     func maxTemperature(max:Int) {
+        //.textだとmax:Int型でエラーになるためString(max)と記載する
         self.maxTemperature.text = String(max)
     }
 
+    //.textだとmax:Int型でエラーになるためString(min)と記載する
     func minTemperature(min: Int) {
         self.minTemperature.text = String(min)
     }
