@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5md-4d-4pD">
-                                <rect key="frame" x="98" y="318" width="196" height="216"/>
+                                <rect key="frame" x="98.333333333333329" y="318" width="196.33333333333337" height="216"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N91-Zt-hwo">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="195"/>
@@ -75,7 +75,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-AW-KxS">
-                                <rect key="frame" x="113.33333333333331" y="614" width="67" height="35"/>
+                                <rect key="frame" x="113.66666666666669" y="614" width="67" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
                                 <connections>
@@ -83,7 +83,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtk-Hy-aGi">
-                                <rect key="frame" x="206.66666666666666" y="614" width="76.333333333333343" height="35"/>
+                                <rect key="frame" x="207" y="614" width="76.333333333333314" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
                                 <connections>
@@ -105,6 +105,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="GMv-kQ-50i"/>
                     <connections>
+                        <outlet property="maxTemperature" destination="jVI-wu-br7" id="7qs-Kj-UHZ"/>
+                        <outlet property="minTemperature" destination="7Re-q4-37M" id="u0E-Lq-HdQ"/>
                         <outlet property="weatherType" destination="N91-Zt-hwo" id="iQL-wb-UCD"/>
                     </connections>
                 </viewController>

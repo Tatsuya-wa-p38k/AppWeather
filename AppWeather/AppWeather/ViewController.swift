@@ -35,16 +35,16 @@ class ViewController: UIViewController{
         //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
         weatherDetail.setWeatherType()
 
-        
 
-        
     }
+
+    @IBOutlet weak var minTemperature: UILabel!
+    @IBOutlet weak var maxTemperature: UILabel!
+
 }
 
 
 extension ViewController: WeatherDelegate {
-
-
 
 
     //エラー発生時の処理を下記２つの関数として記載する
@@ -60,6 +60,14 @@ extension ViewController: WeatherDelegate {
 
     func outPutWeatherInfomation(type:String) {
         
+    }
+
+    func maxTemperature(max:Int) {
+        self.maxTemperature.text = String(max)
+    }
+
+    func minTemperature(min: Int) {
+        self.minTemperature.text = String(min)
     }
 
 
