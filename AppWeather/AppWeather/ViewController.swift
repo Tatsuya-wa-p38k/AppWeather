@@ -5,16 +5,15 @@
 //  Created by spark-06 on 2024/05/23.
 //
 
+
+
+
 import UIKit
-//(delegateで処理をWeather.swiftに移動させるため下記コードは不要)
-//import YumemiWeather
 
 class ViewController: UIViewController{
 
     //Weather.swiftにあるクラスWeatherDetailをインスタンス化
-    //(最初にやるのでclass ViewController又はアウトレット接続のすぐ下に記載する)
     var weatherDetail = WeatherDetail()
-
 
     @IBOutlet weak var weatherType: UIImageView!
 
@@ -23,30 +22,30 @@ class ViewController: UIViewController{
         //インスタンス化したクラスにはデリゲートを持っていく自分自身にお約束
         weatherDetail.delegate = self
         // Do any additional setup after loading the view.
+        // 2.画面表示時にindicatorをhiddenで非表示にさせる
+        indicator.isHidden = true
 
     }
-
 
     @IBAction func buttonClose(_ sender: Any) {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
+
 
     @IBAction func buttonReload(_ sender: Any) {
         //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
         weatherDetail.setWeatherType()
-
-
+        indicator.startAnimating()
+        indicator.isHidden = false
     }
 
     @IBOutlet weak var minTemperature: UILabel!
     @IBOutlet weak var maxTemperature: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
 
 }
 
-
 extension ViewController: WeatherDelegate {
-
-
 
     //エラー発生時の処理を下記２つの関数として記載する
     func didEncounterError(error: Error) {
@@ -54,12 +53,19 @@ extension ViewController: WeatherDelegate {
     }
 
     func showAlert(error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+
+        DispatchQueue.main.async {
+
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+
+        }
+
     }
-
-
 
     func setWeather(weather: Weather) {
         var weatherName = "sunny"
@@ -82,12 +88,17 @@ extension ViewController: WeatherDelegate {
         default:
             break
         }
-        weatherType.image = UIImage(named: weatherName)
-        weatherType.tintColor = tintColor
 
-        self.minTemperature.text = String(weather.minTemperature)
-        self.maxTemperature.text = String(weather.maxTemperature)
+        DispatchQueue.main.async {
 
+            self.weatherType.image = UIImage(named: weatherName)
+            self.weatherType.tintColor = tintColor
+            self.minTemperature.text = String(weather.minTemperature)
+            self.maxTemperature.text = String(weather.maxTemperature)
+            self.indicator.stopAnimating()
+            self.indicator.isHidden = true
+
+        }
     }
 
 }

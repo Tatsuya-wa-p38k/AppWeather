@@ -48,7 +48,6 @@
 		BBD5DDE42BFF175C00115699 = {
 			isa = PBXGroup;
 			children = (
-				BBC14A2E2C06C11D00013301 /* struct.swift */,
 				BBD5DDEF2BFF175C00115699 /* AppWeather */,
 				BBD5DDEE2BFF175C00115699 /* Products */,
 			);
@@ -66,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD5DE072BFF2A3500115699 /* LaunchViewController.swift */,
+				BBC14A2E2C06C11D00013301 /* struct.swift */,
 				BBD5DDF02BFF175C00115699 /* AppDelegate.swift */,
 				BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */,
 				BBD5DDF42BFF175C00115699 /* ViewController.swift */,
