@@ -23,7 +23,7 @@ class ViewController: UIViewController{
         weatherDetail.delegate = self
         // Do any additional setup after loading the view.
         // 2.画面表示時にindicatorをhiddenで非表示にさせる
-        indicator.isHidden = true
+        indicator.hidesWhenStopped = true
 
     }
 
@@ -36,7 +36,6 @@ class ViewController: UIViewController{
         //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
         weatherDetail.setWeatherType()
         indicator.startAnimating()
-        indicator.isHidden = false
     }
 
     @IBOutlet weak var minTemperature: UILabel!
@@ -61,7 +60,6 @@ extension ViewController: WeatherDelegate {
             self.present(alert, animated: true, completion: nil)
 
             self.indicator.stopAnimating()
-            self.indicator.isHidden = true
 
         }
 
@@ -96,8 +94,6 @@ extension ViewController: WeatherDelegate {
             self.minTemperature.text = String(weather.minTemperature)
             self.maxTemperature.text = String(weather.maxTemperature)
             self.indicator.stopAnimating()
-            self.indicator.isHidden = true
-
         }
     }
 
