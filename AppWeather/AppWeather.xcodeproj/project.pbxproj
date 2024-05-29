@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BBAD60B02C00283500330388 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAD60AF2C00283500330388 /* Weather.swift */; };
+		BBC14A2F2C06C11D00013301 /* struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC14A2E2C06C11D00013301 /* struct.swift */; };
 		BBD5DDF12BFF175C00115699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DDF02BFF175C00115699 /* AppDelegate.swift */; };
 		BBD5DDF32BFF175C00115699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */; };
 		BBD5DDF52BFF175C00115699 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5DDF42BFF175C00115699 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		BBAD60AF2C00283500330388 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		BBC14A2E2C06C11D00013301 /* struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct.swift; sourceTree = "<group>"; };
 		BBD5DDED2BFF175C00115699 /* AppWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD5DDF02BFF175C00115699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD5DDF22BFF175C00115699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		BBD5DDE42BFF175C00115699 = {
 			isa = PBXGroup;
 			children = (
+				BBC14A2E2C06C11D00013301 /* struct.swift */,
 				BBD5DDEF2BFF175C00115699 /* AppWeather */,
 				BBD5DDEE2BFF175C00115699 /* Products */,
 			);
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC14A2F2C06C11D00013301 /* struct.swift in Sources */,
 				BBD5DDF52BFF175C00115699 /* ViewController.swift in Sources */,
 				BBD5DDF12BFF175C00115699 /* AppDelegate.swift in Sources */,
 				BBD5DDF32BFF175C00115699 /* SceneDelegate.swift in Sources */,

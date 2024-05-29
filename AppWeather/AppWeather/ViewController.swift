@@ -47,6 +47,7 @@ class ViewController: UIViewController{
 extension ViewController: WeatherDelegate {
 
 
+
     //エラー発生時の処理を下記２つの関数として記載する
     func didEncounterError(error: Error) {
         showAlert(error: error)
@@ -58,26 +59,14 @@ extension ViewController: WeatherDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 
-    func outPutWeatherInfomation(type:String) {
-        
-    }
-
-    func maxTemperature(max:Int) {
-        //.textだとmax:Int型でエラーになるためString(max)と記載する
-        self.maxTemperature.text = String(max)
-    }
-
-    //.textだとmax:Int型でエラーになるためString(min)と記載する
-    func minTemperature(min: Int) {
-        self.minTemperature.text = String(min)
-    }
 
 
-    func setWeatherType(type:String) {
+    func setWeather(weather: Weather) {
         var weatherName = "sunny"
         var tintColor = UIColor.red
 
-        switch type {
+        switch weather.setWeatherType {
+
         case "sunny" :
             weatherName = "sunny"
             tintColor = UIColor.red
@@ -95,6 +84,9 @@ extension ViewController: WeatherDelegate {
         }
         weatherType.image = UIImage(named: weatherName)
         weatherType.tintColor = tintColor
+
+        self.minTemperature.text = String(weather.minTemperature)
+        self.maxTemperature.text = String(weather.maxTemperature)
 
     }
 

@@ -8,24 +8,22 @@
 import Foundation
 import YumemiWeather
 
-struct Date:Codable {
-    let area:String
-    let date:String
-}
-
-struct Weather:Codable {
-    let maxTemperature: Int
-    let minTemperature: Int
-    let setWeatherType: String
-
-    enum CodingKeys: String, CodingKey {
-        case maxTemperature = "max_temperature"
-        case minTemperature = "min_temperature"
-        case setWeatherType = "weather_condition"
-    }
-
-}
-
+//struct Date:Codable {
+//    let area:String
+//    let date:String
+//}
+//
+//struct Weather:Codable {
+//    let maxTemperature: Int
+//    let minTemperature: Int
+//    let setWeatherType: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case maxTemperature = "max_temperature"
+//        case minTemperature = "min_temperature"
+//        case setWeatherType = "weather_condition"
+//    }
+//}
 
 protocol WeatherDelegate {
     //エラー発生時の処理をプロトコル記載する
@@ -52,22 +50,17 @@ class WeatherDetail {
 
             let fetchWeatherString = try YumemiWeather.fetchWeather(sendJsonString)
 
-
             // 1. UTF-8エンコーディングでDataオブジェクトに変換
-            guard let jsonData = fetchWeatherString.data(using: .utf8),
-                  // 2. JSONSerializationでJSONをSwiftデータに変換
-                  let json = try JSONSerialization.jsonObject(with: jsonData, options:  []) as?
-                    [String: Any],
-                  let maxTemperature = json["max_temperature"] as? Int,
-                  let minTemperature = json["min_temperature"] as? Int,
-                  let weatherCondition = json["weather_condition"] as? String
-            else {
+            guard let jsonData = fetchWeatherString.data(using: .utf8) else {
                 return
             }
+            // 2. JSONSerializationでJSONをSwiftデータに変換
+            let json = try JSONSerialization.jsonObject(with: jsonData, options:  []) as?
+            [String: Any]
 
             let weather = try JSONDecoder().decode(Weather.self, from: jsonData)
             //新しい関数setWeatherを作り、structで３つのデータをまとめた
-            self.delegate?.setWeather(weather: Weather)
+            self.delegate?.setWeather(weather: weather)
 
 
         } catch {
