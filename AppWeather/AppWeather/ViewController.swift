@@ -14,12 +14,9 @@ class ViewController: UIViewController{
         weatherDetail.delegate = self
         // Do any additional setup after loading the view.
         // 2.画面表示時にindicatorをhiddenで非表示にさせる
-<<<<<<< HEAD
         indicator.hidesWhenStopped = true
 
-=======
         indicator.isHidden = true
->>>>>>> 08_ThreadBlock
     }
 
     @IBAction func buttonClose(_ sender: Any) {
