@@ -19,52 +19,32 @@ import YumemiWeather
 //    }
 //}
 
-protocol WeatherDelegate {
-    //エラー発生時の処理をプロトコル記載する
-    func didEncounterError(error: Error)
-    
-    //新しい関数setWeatherを作り、structで３つのデータをまとめた
-    func setWeather(weather: Weather)
-}
-
 class WeatherDetail {
-    
-    var delegate:WeatherDelegate?
-    
-    func setWeatherType() {
+    //サブスレッドの中にメインスレッドが入っているので二つを分ける
+    func setWeatherType(completion: @escaping (Result<Weather, Error>) -> Void) {
         DispatchQueue.global().async {
             let sendJsonString = Date(area: "Tokyo",
                                       date: "2020-04-01T12:00:00+09:00")
-            //エラー発生時の処理をdelegateを用いて記載する
             do {
-                let encoder = JSONEncoder()//エンコーダーの準備
+                let encoder = JSONEncoder()
                 let jsonData = try encoder.encode(sendJsonString)
                 guard let sendJsonString = String(data:jsonData, encoding: .utf8) else {
                     return
                 }
-                
-                //下記はAPIを読み込んでいる場所
-                //下記のYumemiWeather.の後をsyncFetchWeatherに書き換えている
+
                 let fetchWeatherString = try YumemiWeather.syncFetchWeather(sendJsonString)
-                
-                // 1. UTF-8エンコーディングでDataオブジェクトに変換
+
                 guard let jsonData = fetchWeatherString.data(using: .utf8) else {
                     return
                 }
-                // 2. JSONSerializationでJSONをSwiftデータに変換
-                let json = try JSONSerialization.jsonObject(with: jsonData, options:  []) as?
-                [String: Any]
-                
+
                 let weather = try JSONDecoder().decode(Weather.self, from: jsonData)
-                //新しい関数setWeatherを作り、structで３つのデータをまとめた
-                self.delegate?.setWeather(weather: weather)
-                
+                    completion(.success(weather))
             } catch {
-                print(error)
-                self.delegate?.didEncounterError(error: error)
+                    completion(.failure(error))
+
             }
         }
     }
-    
 }
 

@@ -3,19 +3,13 @@ import UIKit
 
 class ViewController: UIViewController{
 
-    //Weather.swiftにあるクラスWeatherDetailをインスタンス化
     var weatherDetail = WeatherDetail()
 
     @IBOutlet weak var weatherType: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //インスタンス化したクラスにはデリゲートを持っていく自分自身にお約束
-        weatherDetail.delegate = self
-        // Do any additional setup after loading the view.
-        // 2.画面表示時にindicatorをhiddenで非表示にさせる
         indicator.hidesWhenStopped = true
-
         indicator.isHidden = true
     }
 
@@ -24,18 +18,29 @@ class ViewController: UIViewController{
     }
 
     @IBAction func buttonReload(_ sender: Any) {
-        //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
-        weatherDetail.setWeatherType()
-        indicator.startAnimating()
+        loadWeather()
     }
+
+    //buttonReloadの中の処理が多かったため、それを関数一つで処理できるようにしています
+    func loadWeather() {
+        DispatchQueue.main.async {
+            self.indicator.startAnimating()
+            self.weatherDetail.setWeatherType { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let weather):
+                self.setWeather(weather: weather)
+            case .failure(let error):
+                self.showAlert(error: error)
+            }
+            }
+        }
+    }
+
 
     @IBOutlet weak var minTemperature: UILabel!
     @IBOutlet weak var maxTemperature: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-
-}
-
-extension ViewController: WeatherDelegate {
 
     //エラー発生時の処理を下記２つの関数として記載する
     func didEncounterError(error: Error) {
@@ -48,9 +53,7 @@ extension ViewController: WeatherDelegate {
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-
             self.indicator.stopAnimating()
-
         }
     }
 
@@ -77,7 +80,6 @@ extension ViewController: WeatherDelegate {
         }
 
         DispatchQueue.main.async {
-
             self.weatherType.image = UIImage(named: weatherName)
             self.weatherType.tintColor = tintColor
             self.minTemperature.text = String(weather.minTemperature)
@@ -85,7 +87,7 @@ extension ViewController: WeatherDelegate {
             self.indicator.stopAnimating()
         }
     }
-
 }
+
 
 
