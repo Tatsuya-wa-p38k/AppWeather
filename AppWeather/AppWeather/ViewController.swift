@@ -1,12 +1,3 @@
-//
-//  ViewController.swift
-//  AppWeather
-//
-//  Created by spark-06 on 2024/05/23.
-//
-
-
-
 
 import UIKit
 
@@ -24,13 +15,11 @@ class ViewController: UIViewController{
         // Do any additional setup after loading the view.
         // 2.画面表示時にindicatorをhiddenで非表示にさせる
         indicator.isHidden = true
-
     }
 
     @IBAction func buttonClose(_ sender: Any) {
         dismiss(animated: true)
     }
-
 
     @IBAction func buttonReload(_ sender: Any) {
         //18行目にインスタンス化した「weatherDetail」のメソッド(Weather.swiftにある「setWeatherType()」)を下記に記載をする
@@ -53,7 +42,6 @@ extension ViewController: WeatherDelegate {
     }
 
     func showAlert(error: Error) {
-
         DispatchQueue.main.async {
 
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -64,7 +52,6 @@ extension ViewController: WeatherDelegate {
             self.indicator.isHidden = true
 
         }
-
     }
 
     func setWeather(weather: Weather) {
