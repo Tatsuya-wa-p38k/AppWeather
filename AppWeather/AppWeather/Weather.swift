@@ -38,11 +38,12 @@ class WeatherDetail {
                     return
                 }
 
-                let weather = try JSONDecoder().decode(Weather.self, from: jsonData)
+                let decoder = JSONDecoder()
+                let weather = try decoder.decode(Weather.self, from: jsonData)
+
                     completion(.success(weather))
             } catch {
                     completion(.failure(error))
-
             }
         }
     }

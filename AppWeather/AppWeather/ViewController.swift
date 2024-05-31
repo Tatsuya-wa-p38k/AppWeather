@@ -26,6 +26,7 @@ class ViewController: UIViewController{
         DispatchQueue.main.async {
             self.indicator.startAnimating()
             self.weatherDetail.setWeatherType { [weak self] result in
+
             guard let self = self else { return }
             switch result {
             case .success(let weather):
@@ -49,7 +50,6 @@ class ViewController: UIViewController{
 
     func showAlert(error: Error) {
         DispatchQueue.main.async {
-
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -88,6 +88,3 @@ class ViewController: UIViewController{
         }
     }
 }
-
-
-
