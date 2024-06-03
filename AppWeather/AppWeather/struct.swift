@@ -1,11 +1,7 @@
-//
-//  struct.swift
-//  AppWeather
-//
-//  Created by spark-06 on 2024/05/29.
-//
+
 
 import Foundation
+import YumemiWeather
 
 struct Date:Codable {
     let area:String
@@ -23,3 +19,18 @@ struct Weather:Codable {
         case setWeatherType = "weather_condition"
     }
 }
+
+//WeatherList.swift用のstructを記載する
+
+//API に請求する JSON 文字列の例：
+struct WeatherRequest: Codable {
+    let areas: [String]
+    let date: String
+}
+
+//返された AreaResponse の JSON 文字列の例
+struct AreaWeather: Codable {
+    let area: Area
+    let info: Weather
+}
+
