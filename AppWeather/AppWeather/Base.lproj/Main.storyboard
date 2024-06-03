@@ -18,13 +18,10 @@
                         <viewLayoutGuide key="safeArea" id="pXV-HZ-fZJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="tomain" id="twJ-XW-HVt"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snK-WE-VjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-650" y="4"/>
+            <point key="canvasLocation" x="102" y="-749"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
