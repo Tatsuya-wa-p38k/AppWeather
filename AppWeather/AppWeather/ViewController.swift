@@ -4,6 +4,7 @@ import UIKit
 class ViewController: UIViewController{
 
     var weatherDetail = WeatherDetail()
+    var acceptAreaWeather:AreaWeather? = nil
 
     @IBOutlet weak var weatherType: UIImageView!
 
@@ -37,6 +38,8 @@ class ViewController: UIViewController{
             }
         }
     }
+
+    
 
 
     @IBOutlet weak var minTemperature: UILabel!
