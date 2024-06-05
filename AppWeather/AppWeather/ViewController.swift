@@ -4,7 +4,10 @@ import UIKit
 class ViewController: UIViewController{
 
     var weatherDetail = WeatherDetail()
-    var acceptAreaWeather:AreaWeather? = nil
+    //型を揃えないとsegueで情報の受け取りができない、空欄でも落ちないように?をつけている
+    var acceptAreaWeather:AreaWeather?
+
+    weak var tableListViewController: TableListViewController?
 
     @IBOutlet weak var weatherType: UIImageView!
 
@@ -12,9 +15,16 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         indicator.hidesWhenStopped = true
         indicator.isHidden = true
+
+        if let areaWeather = acceptAreaWeather {
+            setWeather(weather: areaWeather.info)
+        }
     }
 
+
     @IBAction func buttonClose(_ sender: Any) {
+        // TableListViewControllerの選択解除メソッドを呼び出す
+        tableListViewController?.deselectSelectedRow()
         dismiss(animated: true)
     }
 
@@ -38,9 +48,6 @@ class ViewController: UIViewController{
             }
         }
     }
-
-    
-
 
     @IBOutlet weak var minTemperature: UILabel!
     @IBOutlet weak var maxTemperature: UILabel!

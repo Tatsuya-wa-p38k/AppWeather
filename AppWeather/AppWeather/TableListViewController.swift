@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TableListViewController: UIViewController, UITableViewDataSource {
+class TableListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -12,10 +12,25 @@ class TableListViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         // Do any additional setup after loading the view.
         fetchAreaData()
+
+        // UIRefreshControlの設定
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
-    
+
+    //上から下に引っ張った時に画面が更新される2/2
+    @objc private func onRefresh(_ sender: AnyObject) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.tableView.refreshControl?.endRefreshing()
+
+            //最新の時間の天気に更新するため下記関数を再度画面を引っ張った際にやらせる
+            self?.fetchAreaData()
+        }
+    }
 
     func fetchAreaData() {
         weatherList.fetchWeatherList { result in
@@ -63,14 +78,27 @@ class TableListViewController: UIViewController, UITableViewDataSource {
     }
 
 
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showWeatherDetail",
-           let destinationVC = segue.destination as? ViewController {
-    //        destinationVC.acceptAreaWeather = AreaWeather
+           let destinationVC = segue.destination as? ViewController,
+           let indexPath = tableView.indexPathForSelectedRow {
+            //areasの情報をViewControllerの変数acceptAreaWeatherに渡すためのコード
+            destinationVC.acceptAreaWeather = areas[indexPath.row]
+
+            // ViewController に TableListViewController の参照を渡す
+                      destinationVC.tableListViewController = self
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showWeatherDetail", sender: self)
         }
+
+    // セルの選択を解除するメソッド
+    func deselectSelectedRow() {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+    }
 }

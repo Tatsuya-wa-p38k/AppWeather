@@ -7,9 +7,12 @@ class WeatherList {
     //ResultでString型ではなく、structのAreaWeatherで返す
     func fetchWeatherList(completion: @escaping (Result<[AreaWeather], Error>) -> Void) {
         DispatchQueue.global().async {
+            // 現在時刻をISO8601形式の文字列に変換
+                        let dateFormatter = ISO8601DateFormatter()
+                        let formattedDate = dateFormatter.string(from: Date())
             //areas:[]を空にすることで全部の地域が表示される
             let sendJsonString = WeatherRequest(areas:[],
-                                                date: "2020-04-01T12:00:00+09:00")
+                                                date: formattedDate) //更新処理がかかった瞬間の時間
             do {
                 let encoder = JSONEncoder()
                 let jsonData = try encoder.encode(sendJsonString)
