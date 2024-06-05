@@ -91,10 +91,6 @@ class TableListViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showWeatherDetail", sender: self)
-        }
-
     // セルの選択を解除するメソッド
     func deselectSelectedRow() {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
