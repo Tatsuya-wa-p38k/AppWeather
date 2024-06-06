@@ -16,6 +16,8 @@ class ViewController: UIViewController{
         indicator.hidesWhenStopped = true
         indicator.isHidden = true
 
+        navigationItem.title = acceptAreaWeather?.area.rawValue
+
         if let areaWeather = acceptAreaWeather {
             setWeather(weather: areaWeather.info)
         }
@@ -25,7 +27,10 @@ class ViewController: UIViewController{
     @IBAction func buttonClose(_ sender: Any) {
         // TableListViewControllerの選択解除メソッドを呼び出す
         tableListViewController?.deselectSelectedRow()
-        dismiss(animated: true)
+
+        //NavgationViewControllerを追加したせいでdismiss(animated: true)が機能しないので、
+        //下記コードで最初の画面に戻るようにする
+        navigationController?.popToRootViewController(animated: true)
     }
 
     @IBAction func buttonReload(_ sender: Any) {
@@ -38,13 +43,13 @@ class ViewController: UIViewController{
             self.indicator.startAnimating()
             self.weatherDetail.setWeatherType { [weak self] result in
 
-            guard let self = self else { return }
-            switch result {
-            case .success(let weather):
-                self.setWeather(weather: weather)
-            case .failure(let error):
-                self.showAlert(error: error)
-            }
+                guard let self = self else { return }
+                switch result {
+                case .success(let weather):
+                    self.setWeather(weather: weather)
+                case .failure(let error):
+                    self.showAlert(error: error)
+                }
             }
         }
     }
@@ -72,7 +77,7 @@ class ViewController: UIViewController{
         var tintColor = UIColor.red
 
         switch weather.setWeatherType {
-
+            
         case "sunny" :
             weatherName = "sunny"
             tintColor = UIColor.red

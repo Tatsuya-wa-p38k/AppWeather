@@ -76,7 +76,7 @@ class TableListViewController: UIViewController, UITableViewDataSource, UITableV
         }
         return cell
     }
-
+    
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,7 +87,7 @@ class TableListViewController: UIViewController, UITableViewDataSource, UITableV
             destinationVC.acceptAreaWeather = areas[indexPath.row]
 
             // ViewController に TableListViewController の参照を渡す
-                      destinationVC.tableListViewController = self
+            destinationVC.tableListViewController = self
         }
     }
 
