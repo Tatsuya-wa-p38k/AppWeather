@@ -6,7 +6,7 @@ class TableListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
 
     let weatherList = WeatherList()
-    //struct.swiftから引っぱってkた
+    //struct.swiftから引っぱってきた
     var areas: [AreaWeather] = []
 
     override func viewDidLoad() {
@@ -76,8 +76,6 @@ class TableListViewController: UIViewController, UITableViewDataSource, UITableV
         }
         return cell
     }
-    
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showWeatherDetail",

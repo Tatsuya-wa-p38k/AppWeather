@@ -4,6 +4,8 @@ import UIKit
 class ViewController: UIViewController{
 
     var weatherDetail = WeatherDetail()
+
+
     //型を揃えないとsegueで情報の受け取りができない、空欄でも落ちないように?をつけている
     var acceptAreaWeather:AreaWeather?
 
