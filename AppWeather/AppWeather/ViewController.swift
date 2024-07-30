@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, UINavigationControllerDelegate{
 
     var weatherDetail = WeatherDetail()
 
@@ -19,11 +19,23 @@ class ViewController: UIViewController{
         indicator.isHidden = true
 
         navigationItem.title = acceptAreaWeather?.area.rawValue
+        
+        // NavigationControllerのデリゲートを設定
+             navigationController?.delegate = self
+
 
         if let areaWeather = acceptAreaWeather {
             setWeather(weather: areaWeather.info)
         }
     }
+
+    
+    // TableListViewControllerに戻る前に選択解除を行うため
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+          if viewController is TableListViewController {
+              tableListViewController?.deselectSelectedRow()
+          }
+      }
 
 
     @IBAction func buttonClose(_ sender: Any) {
